@@ -59,58 +59,64 @@ const isActive = ref(false)
 </script>
 
 <template>
-  <p>Hello there</p>
-
-  <p>Msg: {{ msg }}</p>
-
-  <br />
-
-  <p>String interpolation vs using the v-html directive</p>
   <div>
+    <p>Hello there</p>
+
+    <p>Msg: {{ msg }}</p>
+
+    <br />
+
+    <p>String interpolation vs using the v-html directive</p>
     <div>
-      {{ htmlElement }}
+      <div>
+        {{ htmlElement }}
+      </div>
+
+      <br />
+
+      <div v-html="htmlElement"></div>
+    </div>
+
+    <div>
+      <p>Boolean attributes and v-binding</p>
+      <button @click="changeMsg" :disabled="disabled">This button is disabled for 5 seconds</button>
     </div>
 
     <br />
 
-    <div v-html="htmlElement"></div>
-  </div>
+    <div>
+      <p>Dynamic attribute names</p>
 
-  <div>
-    <p>Boolean attributes and v-binding</p>
-    <button @click="changeMsg" :disabled="disabled">This button is disabled for 5 seconds</button>
-  </div>
+      <a :href="link" v-bind="styleObject">Click me</a>
+    </div>
 
-  <br />
+    <div>
+      <p>Computed Properties</p>
 
-  <div>
-    <p>Dynamic attribute names</p>
+      <p>
+        {{ author.name }} is an author. Does he have published books? {{ publishedBooksMessage }}
+      </p>
 
-    <a :href="link" v-bind="styleObject">Click me</a>
-  </div>
+      <p>Writable Computed</p>
+      <p>
+        Split author name = {{ splitAuthorName.firstName }} and {{ splitAuthorName.secondName }}
+      </p>
 
-  <div>
-    <p>Computed Properties</p>
+      <button @click="changeAuthorName">Change Author Name</button>
+    </div>
 
-    <p>{{ author.name }} is an author. Does he have published books? {{ publishedBooksMessage }}</p>
-
-    <p>Writable Computed</p>
-    <p>Split author name = {{ splitAuthorName.firstName }} and {{ splitAuthorName.secondName }}</p>
-
-    <button @click="changeAuthorName">Change Author Name</button>
-  </div>
-
-  <div>
-    <p
-      :class="{ active: isActive }"
-      @click="
-        () => {
-          isActive = !isActive
-        }
-      "
-    >
-      Class and style bindings. Click on this to change the color
-    </p>
+    <div>
+      <p
+        :class="{ active: isActive }"
+        @click="
+          () => {
+            isActive = !isActive
+          }
+        "
+      >
+        Class and style bindings. Click on this to change the color
+      </p>
+    </div>
   </div>
 </template>
 

@@ -21,7 +21,6 @@ const link = ref('https://konadu.dev')
 
 // Reactivity Fundamentals
 function changeMsg() {
-  console.log("Clicked")
   msg.value = "Changing the message, and seeing if it will work, and it will trigger reactivity"
 }
 

@@ -34,6 +34,23 @@ const author = ref({
 const publishedBooksMessage = computed(() => (author.value.books.length > 0 ? 'Yes' : 'No'))
 // You can access a computed property like so:
 publishedBooksMessage.value
+
+// Writable computed
+const splitAuthorName = computed({
+  get() {
+    return {
+      firstName: author.value.name.split(' ')[0],
+      secondName: author.value.name.split(' ').slice(1).join(' ')
+    }
+  },
+  set(value: string) {
+    author.value.name = value
+  }
+})
+
+function changeAuthorName() {
+  splitAuthorName.value = 'Kwadwo Nkansah Liwin Ani Potwe Potwe'
+}
 </script>
 
 <template>
@@ -71,6 +88,11 @@ publishedBooksMessage.value
     <p>Computed Properties</p>
 
     <p>{{ author.name }} is an author. Does he have published books? {{ publishedBooksMessage }}</p>
+
+    <p>Writable Computed</p>
+    <p>Split author name = {{ splitAuthorName.firstName }} and {{ splitAuthorName.secondName }}</p>
+
+    <button @click="changeAuthorName">Change Author Name</button>
   </div>
 </template>
 

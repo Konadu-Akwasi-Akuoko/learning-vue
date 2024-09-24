@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue'
 
-let msg = ref("This is an example of string interpolation")
+let msg = ref('This is an example of string interpolation')
 const htmlElement = `
   <p style="color: red;">
     Hello world! This is color red
@@ -10,34 +10,40 @@ const htmlElement = `
 
 const disabled = ref(true)
 setTimeout(() => {
-  disabled.value = false;
+  disabled.value = false
 }, 5000)
 
 const styleObject = ref({
-  style: "color: red;"
-});
+  style: 'color: red;'
+})
 const link = ref('https://konadu.dev')
-
 
 // Reactivity Fundamentals
 function changeMsg() {
-  msg.value = "Changing the message, and seeing if it will work, and it will trigger reactivity"
+  msg.value = 'Changing the message, and seeing if it will work, and it will trigger reactivity'
+
+  author.value.books = []
 }
 
+// Computed properties
+const author = ref({
+  name: 'John Doe',
+  books: ['Vue 2 - Advanced Guide', 'Vue 3 - Basic Guide', 'Vue 4 - The Mystery']
+})
 
+const publishedBooksMessage = computed(() => (author.value.books.length > 0 ? 'Yes' : 'No'))
+// You can access a computed property like so:
+publishedBooksMessage.value
 </script>
 
 <template>
-  <p>
-    Hello there
-  </p>
+  <p>Hello there</p>
 
-
-  <p> Msg: {{ msg }} </p>
+  <p>Msg: {{ msg }}</p>
 
   <br />
 
-  <p> String interpolation vs using the v-html directive</p>
+  <p>String interpolation vs using the v-html directive</p>
   <div>
     <div>
       {{ htmlElement }}
@@ -59,6 +65,12 @@ function changeMsg() {
     <p>Dynamic attribute names</p>
 
     <a :href="link" v-bind="styleObject">Click me</a>
+  </div>
+
+  <div>
+    <p>Computed Properties</p>
+
+    <p>{{ author.name }} is an author. Does he have published books? {{ publishedBooksMessage }}</p>
   </div>
 </template>
 

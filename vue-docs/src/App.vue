@@ -53,6 +53,9 @@ const splitAuthorName = computed({
 function changeAuthorName() {
   splitAuthorName.value = 'Kwadwo Nkansah Liwin Ani Potwe Potwe'
 }
+
+// Class and style bindings
+const isActive = ref(false)
 </script>
 
 <template>
@@ -96,6 +99,23 @@ function changeAuthorName() {
 
     <button @click="changeAuthorName">Change Author Name</button>
   </div>
+
+  <div>
+    <p
+      :class="{ active: isActive }"
+      @click="
+        () => {
+          isActive = !isActive
+        }
+      "
+    >
+      Class and style bindings. Click on this to change the color
+    </p>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.active {
+  color: blue;
+}
+</style>

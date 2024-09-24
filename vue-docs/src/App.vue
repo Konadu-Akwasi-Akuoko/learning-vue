@@ -13,6 +13,11 @@ setTimeout(() => {
   disabled.value = false;
 }, 5000)
 
+const styleObject = ref({
+  style: "color: red;"
+});
+const link = ref('https://konadu.dev')
+
 </script>
 
 <template>
@@ -39,6 +44,14 @@ setTimeout(() => {
   <div>
     <p>Boolean attributes and v-binding</p>
     <button :disabled="disabled">This button is disabled for 5 seconds</button>
+  </div>
+
+  <br />
+
+  <div>
+    <p>Dynamic attribute names</p>
+
+    <a :href="link" v-bind="styleObject">Click me</a>
   </div>
 </template>
 

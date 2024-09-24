@@ -35,7 +35,9 @@ const publishedBooksMessage = computed(() => (author.value.books.length > 0 ? 'Y
 // You can access a computed property like so:
 publishedBooksMessage.value
 
-// Writable computed
+// Writable computed, IT IS A BAD PRACTICE, DON'T DO THIS INSIDE YOUR CODE, RATHER MUTATE
+// THE DERIVED REF(author.value.name) SO THAT THE COMPUTED VALUE WILL BE COMPUTED AGAIN,
+// AS IT IS A DERIVED REF
 const splitAuthorName = computed({
   get() {
     return {

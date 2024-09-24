@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const msg = "This is an example of string interpolation"
+let msg = ref("This is an example of string interpolation")
 const htmlElement = `
   <p style="color: red;">
     Hello world! This is color red
@@ -17,6 +17,14 @@ const styleObject = ref({
   style: "color: red;"
 });
 const link = ref('https://konadu.dev')
+
+
+// Reactivity Fundamentals
+function changeMsg() {
+  console.log("Clicked")
+  msg.value = "Changing the message, and seeing if it will work, and it will trigger reactivity"
+}
+
 
 </script>
 
@@ -43,7 +51,7 @@ const link = ref('https://konadu.dev')
 
   <div>
     <p>Boolean attributes and v-binding</p>
-    <button :disabled="disabled">This button is disabled for 5 seconds</button>
+    <button @click="changeMsg" :disabled="disabled">This button is disabled for 5 seconds</button>
   </div>
 
   <br />

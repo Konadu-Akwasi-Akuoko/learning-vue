@@ -74,7 +74,7 @@ watch(msg, (newValue, oldValue) => {
   console.log('New value: ', newValue, ' and old value: ', oldValue)
 })
 // Watchers with array
-watch([msg, author.value.name, link], (newValue, oldValue) => {
+watch([msg, author, link], (newValue, oldValue) => {
   console.log('New value: ', newValue, ' ,and old value: ', oldValue)
 })
 </script>

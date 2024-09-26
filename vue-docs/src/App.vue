@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, onUpdated, ref } from 'vue'
 
 onMounted(() => {
   console.log('The component is mounted')
+})
+
+onUpdated(() => {
+  console.log('Update happened')
 })
 
 let msg = ref('This is an example of string interpolation')

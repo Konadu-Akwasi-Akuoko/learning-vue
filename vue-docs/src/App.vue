@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onRenderTriggered, onUpdated, ref } from 'vue'
+import { computed, onMounted, onRenderTriggered, onUpdated, ref, watch } from 'vue'
 
 onMounted(() => {
   console.log('The component is mounted')
@@ -68,6 +68,15 @@ function changeAuthorName() {
 
 // Class and style bindings
 const isActive = ref(false)
+
+// Watchers
+watch(msg, (newValue, oldValue) => {
+  console.log('New value: ', newValue, ' and old value: ', oldValue)
+})
+// Watchers with array
+watch([msg, author.value.name, link], (newValue, oldValue) => {
+  console.log('New value: ', newValue, ' ,and old value: ', oldValue)
+})
 </script>
 
 <template>

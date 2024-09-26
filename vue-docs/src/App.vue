@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
+
+onMounted(() => {
+  console.log('The component is mounted')
+})
 
 let msg = ref('This is an example of string interpolation')
 const htmlElement = `
